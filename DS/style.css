@@ -1,0 +1,107 @@
+body{
+    background:#09121d;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.flower{
+    position:relative;
+    width:420px;
+}
+
+.flower img{
+    width:100%;
+    filter:brightness(.85);
+    animation:flowerGlow 5s infinite ease-in-out;
+}
+
+@keyframes flowerGlow{
+
+0%,100%{
+filter:brightness(.8);
+}
+
+50%{
+filter:brightness(1.3);
+}
+
+}
+
+.glow{
+
+position:absolute;
+width:120px;
+height:120px;
+
+border-radius:50%;
+
+background:
+radial-gradient(circle,
+rgba(255,240,120,.95),
+rgba(255,150,20,.45),
+transparent 70%);
+
+mix-blend-mode:screen;
+
+opacity:0;
+
+animation:wave 2.5s infinite;
+}
+
+/* Positions over petals */
+
+.g1{
+left:40px;
+top:80px;
+animation-delay:0s;
+}
+
+.g2{
+left:130px;
+top:20px;
+animation-delay:.4s;
+}
+
+.g3{
+left:230px;
+top:70px;
+animation-delay:.8s;
+}
+
+.g4{
+left:170px;
+top:170px;
+animation-delay:1.2s;
+}
+
+.g5{
+left:90px;
+top:180px;
+animation-delay:1.6s;
+}
+
+@keyframes wave{
+
+0%{
+opacity:0;
+transform:scale(.2);
+}
+
+30%{
+opacity:1;
+transform:scale(1.2);
+}
+
+60%{
+opacity:.6;
+transform:scale(1.8);
+}
+
+100%{
+opacity:0;
+transform:scale(2.3);
+}
+
+}

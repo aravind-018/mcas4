@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Night Garden</title>
+<style>
+/* A self-contained, SVG botanical illustration */
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#000}svg{width:100%;height:100%;display:block;background:radial-gradient(ellipse at 52% 85%,#0b1108 0,#020401 42%,#000 78%)}
+.draw{fill:none;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke;stroke-dasharray:var(--len);stroke-dashoffset:var(--len);opacity:0;filter:url(#goldGlow)}
+.ink{fill:none;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke;stroke-dasharray:var(--len);stroke-dashoffset:var(--len);opacity:0}
+.drawn{animation:trace var(--dur) cubic-bezier(.35,.02,.2,1) forwards;animation-delay:var(--delay)}
+.living{opacity:0;animation:arrive 1.8s ease-out forwards, sway var(--sway,5s) ease-in-out infinite alternate;animation-delay:calc(var(--delay) + var(--dur) - .15s),calc(var(--delay) + var(--dur) + 1.6s);transform-box:fill-box;transform-origin:bottom center}
+.vein{stroke:#eab34b;stroke-width:.75;opacity:.65}.stem{stroke:#4b7c38;stroke-width:3}.stemFine{stroke:#90a54d;stroke-width:1}.leaf{fill:url(#leafPaint);stroke:#9daf50;stroke-width:1.2}.petal{fill:url(#petalPaint);stroke:#f7bd48;stroke-width:1.1}.orange{fill:url(#orangePaint);stroke:#f6a535}.red{fill:url(#redPaint);stroke:#e96b29}.center{fill:url(#centerPaint);stroke:#ffd15b;stroke-width:.8}
+@keyframes trace{0%{stroke-dashoffset:var(--len);opacity:0}4%{opacity:1}100%{stroke-dashoffset:0;opacity:1}}@keyframes arrive{to{opacity:1}}@keyframes sway{to{transform:rotate(var(--tilt,1deg)) translateX(2px)}}
+.spark{opacity:0;filter:url(#softGlow);animation:fly 7s ease-in-out infinite;animation-delay:var(--d)}@keyframes fly{0%,20%{opacity:0;transform:translate(0,8px)}30%,78%{opacity:.9}100%{opacity:0;transform:translate(var(--x),-75px)}}
+.artist{filter:url(#brightGlow);animation:artist 24s linear forwards;opacity:0}@keyframes artist{0%{opacity:0;transform:translate(30px,0)}2%,96%{opacity:1}100%{opacity:0;transform:translate(1080px,-120px)}}
+</style></head><body>
+<svg viewBox="0 0 1200 720" role="img" aria-label="A magical hand drawn garden appearing in the dark">
+<defs>
+ <linearGradient id="leafPaint" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#16351a"/><stop offset=".48" stop-color="#497233"/><stop offset="1" stop-color="#98a54a"/></linearGradient>
+ <radialGradient id="petalPaint"><stop stop-color="#fff1a3"/><stop offset=".45" stop-color="#f9c348"/><stop offset="1" stop-color="#d77b1e"/></radialGradient><radialGradient id="orangePaint"><stop stop-color="#ffdb62"/><stop offset=".48" stop-color="#f58c25"/><stop offset="1" stop-color="#a62d17"/></radialGradient><radialGradient id="redPaint"><stop stop-color="#ffd067"/><stop offset=".36" stop-color="#d64b20"/><stop offset="1" stop-color="#691410"/></radialGradient><radialGradient id="centerPaint"><stop stop-color="#fff5a9"/><stop offset=".35" stop-color="#f3b329"/><stop offset="1" stop-color="#7b3a13"/></radialGradient>
+ <filter id="goldGlow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter><filter id="softGlow" x="-400%" y="-400%" width="800%" height="800%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter><filter id="brightGlow" x="-500%" y="-500%" width="1000%" height="1000%"><feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+ <path id="leaf" d="M0 0 C-25 -19 -40 -40 -36 -55 C-16 -53 3 -38 8 -11 C10 -5 7 -1 0 0Z"/><path id="blade" d="M0 0 Q-7 -25 4 -50"/>
+ <path id="petalA" d="M0 0 C-22 -14 -27 -54 -7 -76 C4 -88 13 -80 16 -63 C20 -39 12 -13 0 0Z"/><path id="petalB" d="M0 0 C-30 -4 -48 -37 -39 -61 C-33 -76 -20 -73 -9 -58 C5 -37 10 -13 0 0Z"/>
+ <g id="flower"><g class="petals"><use href="#petalA" class="petal" transform="rotate(0)"/><use href="#petalB" class="orange" transform="rotate(48)"/><use href="#petalA" class="red" transform="rotate(95)"/><use href="#petalB" class="petal" transform="rotate(145)"/><use href="#petalA" class="orange" transform="rotate(194)"/><use href="#petalB" class="red" transform="rotate(244)"/><use href="#petalA" class="petal" transform="rotate(292)"/><use href="#petalB" class="orange" transform="rotate(334)"/><circle r="13" class="center"/></g><path d="M0-7 C3-28 1-46 -4-65M0-7 C-8-26 -14-38 -22-48M0-7 C9-25 16-39 15-57" class="ink vein" style="--len:180"/></g>
+</defs>
+<g id="understory">
+ <!-- grasses are deliberately irregular, in three flowing bands -->
+ <g class="drawn draw stemFine" style="--len:170;--dur:1.2s;--delay:.4s"><path d="M30 720 Q20 650 42 599M55 720 Q77 653 93 622M113 720 Q105 670 121 616M175 720 Q155 657 169 608M220 720 Q238 665 230 621M288 720 Q280 667 305 608M350 720 Q365 658 375 630M910 720 Q930 660 917 615M968 720 Q951 657 976 601M1045 720 Q1068 657 1088 618M1130 720 Q1114 651 1145 594"/></g>
+ <path class="draw stemFine drawn" style="--len:800;--dur:3s;--delay:1.1s" d="M0 690 C150 652 206 699 358 676 S620 705 760 675 S1050 694 1200 658"/>
+</g>
+<g id="stems"></g><g id="blooms"></g><g id="fireflies"></g>
+<g class="artist"><circle r="5" fill="#fff5b3"/><circle r="15" fill="#e9a723" opacity=".28"/></g>
+</svg>
+<script>
+/* The garden is generated from hand-tuned botanical building blocks, then every line is measured and traced. */
+const svg=document.querySelector('svg'), stems=document.querySelector('#stems'), blooms=document.querySelector('#blooms'), fireflies=document.querySelector('#fireflies');
+const ns='http://www.w3.org/2000/svg'; const E=(tag,attrs={})=>{let e=document.createElementNS(ns,tag);for(let k in attrs)e.setAttribute(k,attrs[k]);return e};
+const data=[ [74,574,130,-12,.68],[130,590,185,8,.52],[188,570,101,-17,.62],[243,612,210,13,.45],[302,574,155,-8,.68],[357,605,250,14,.5],[421,572,115,-14,.74],[480,612,205,9,.55],[542,570,145,-12,.72],[603,600,236,15,.48],[664,562,104,-8,.82],[723,608,194,11,.57],[780,570,138,-17,.7],[838,607,240,12,.5],[895,568,118,-13,.75],[951,610,205,7,.54],[1008,566,150,-14,.69],[1064,603,245,13,.48],[1120,566,126,-10,.7],[1163,615,190,8,.5],[335,657,100,-5,.45],[875,661,110,7,.44] ];
+function line(d,cls,delay,dur=1){let p=E('path',{d,'class':`draw ${cls} drawn`});p.style.setProperty('--len','500');p.style.setProperty('--delay',delay+'s');p.style.setProperty('--dur',dur+'s');stems.append(p);return p}
+data.forEach(([x,base,h,lean,scale],i)=>{let top=base-h, cx=x+lean; let d=`M${x} ${base} C${x-3} ${base-h*.28}, ${cx+18} ${base-h*.64}, ${cx} ${top}`;let delay=1.8+i*.64;line(d,'stem',delay,1.1);
+ // leaves draw first as outlines then come alive as washed watercolor shapes
+ [[.4,-1],[.62,1],[.76,-1]].forEach(([at,side],j)=>{let lx=x+(cx-x)*at,ly=base-h*at;line(`M${lx} ${ly} Q${lx+side*31} ${ly-19} ${lx+side*43} ${ly-42}`,'stemFine',delay+.25+j*.17,.56);let leaf=E('use',{href:'#leaf',class:'leaf living',transform:`translate(${lx},${ly}) scale(${scale*(.56+j*.1)*side},${scale*(.56+j*.1)}) rotate(${side<0?-8:12})`});leaf.style.setProperty('--delay',(delay+.35+j*.17)+'s');leaf.style.setProperty('--dur','.55s');leaf.style.setProperty('--sway',(4.5+j)+'s');leaf.style.setProperty('--tilt',side*1.4+'deg');stems.append(leaf)});
+ let g=E('g',{class:'living',transform:`translate(${cx} ${top}) scale(${scale}) rotate(${(i*29)%28-14})`});g.innerHTML=document.querySelector('#flower').innerHTML;g.style.setProperty('--delay',(delay+.72)+'s');g.style.setProperty('--dur','1.1s');g.style.setProperty('--sway',(4.5+(i%4))+'s');g.style.setProperty('--tilt',((i%2?1:-1)*(1+i%3*.4))+'deg');blooms.append(g);
+ // trace each petal contour / veins before the painted bloom is unveiled
+ for(let a=0;a<8;a++){let p=E('use',{href:a%2?'#petalB':'#petalA',class:'draw drawn',transform:`translate(${cx} ${top}) scale(${scale}) rotate(${a*45+(i%3)*4})`});p.style.cssText+=`--len:190;--delay:${delay+.7+a*.1}s;--dur:.52s;stroke:#f6bd4a;stroke-width:1.4`;blooms.insertBefore(p,g)}
+});
+// pollen/fireflies are withheld until the completed garden is quietly breathing
+for(let i=0;i<36;i++){let c=E('circle',{cx:40+(i*97)%1120,cy:500+(i*53)%190,r:i%4===0?2:1.15,fill:i%3?'#ffd464':'#fff2a6','class':'spark'});c.style.setProperty('--d',(16+i*.31)+'s');c.style.setProperty('--x',((i%7)-3)*13+'px');fireflies.append(c)}
+</script></body></html>
